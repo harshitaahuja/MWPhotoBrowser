@@ -105,7 +105,7 @@
     }
     _photo = photo;
     UIImage *img = [_photoBrowser imageForPhoto:_photo];
-    if (img) {
+    if (img && [photo underlyingImage]!=nil) {
         [self displayImage];
     } else {
         // Will be loading so show loading
@@ -115,7 +115,7 @@
 
 // Get and display image
 - (void)displayImage {
-	if (_photo && _photoImageView.image == nil) {
+	if (_photo ) {
 		
 		// Reset
 		self.maximumZoomScale = 1;
@@ -125,6 +125,7 @@
 		
 		// Get image from browser as it handles ordering of fetching
 		UIImage *img = [_photoBrowser imageForPhoto:_photo];
+        
 		if (img) {
 			
 			// Hide indicator
@@ -152,6 +153,48 @@
 		}
 		[self setNeedsLayout];
 	}
+}
+
+// Get and display image
+- (void)displayThumbnail {
+    if (_photo && _photoImageView.image == nil ) {
+        
+        // Reset
+        self.maximumZoomScale = 1;
+        self.minimumZoomScale = 1;
+        self.zoomScale = 1;
+        self.contentSize = CGSizeMake(0, 0);
+        
+        // Get image from browser as it handles ordering of fetching
+        UIImage *img = [_photoBrowser imageForPhoto:_photo];
+        
+        if (img) {
+            
+            // Hide indicator
+            //[self hideLoadingIndicator];
+            
+            // Set image
+            _photoImageView.image = img;
+            _photoImageView.hidden = NO;
+            
+            // Setup photo frame
+            CGRect photoImageViewFrame;
+            photoImageViewFrame.origin = CGPointZero;
+            photoImageViewFrame.size = img.size;
+            _photoImageView.frame = photoImageViewFrame;
+            self.contentSize = photoImageViewFrame.size;
+            
+            // Set zoom to minimum zoom
+            [self setMaxMinZoomScalesForCurrentBounds];
+            
+        } else {
+            
+            // Failed no image
+           // [self displayImageFailure];
+            
+        }
+        [self setNeedsLayout];
+    }
 }
 
 // Image failed so just show black!

@@ -27,6 +27,8 @@
 @implementation MWPhoto
 
 @synthesize underlyingImage = _underlyingImage; // synth property from protocol
+@synthesize fullViewThumbImage = _fullViewThumbImage; // synth property from protocol
+
 
 #pragma mark - Class Methods
 
@@ -36,11 +38,11 @@
 
 // Deprecated
 + (MWPhoto *)photoWithFilePath:(NSString *)path {
-    return [MWPhoto photoWithURL:[NSURL fileURLWithPath:path]];
+    return [MWPhoto photoWithURL:[NSURL fileURLWithPath:path] fullViewThumbnail:nil];
 }
 
-+ (MWPhoto *)photoWithURL:(NSURL *)url {
-	return [[MWPhoto alloc] initWithURL:url];
++ (MWPhoto *)photoWithURL:(NSURL *)url fullViewThumbnail:(UIImage*)thumbnailImage{
+	return [[MWPhoto alloc] initWithURL:url fullViewThumbnail:thumbnailImage];
 }
 
 #pragma mark - Init
@@ -60,9 +62,10 @@
 	return self;
 }
 
-- (id)initWithURL:(NSURL *)url {
+- (id)initWithURL:(NSURL *)url fullViewThumbnail:(UIImage*)thumbnailImage{
 	if ((self = [super init])) {
 		_photoURL = [url copy];
+        _fullViewThumbnailImage = thumbnailImage;
 	}
 	return self;
 }
@@ -73,11 +76,18 @@
     return _underlyingImage;
 }
 
+- (UIImage *)fullViewThumbImage {
+    return _fullViewThumbnailImage;
+}
+
 - (void)loadUnderlyingImageAndNotify {
     NSAssert([[NSThread currentThread] isMainThread], @"This method must be called on the main thread.");
-    if (_loadingInProgress) return;
+    if (_loadingInProgress) {
+        return;
+    };
     _loadingInProgress = YES;
     @try {
+        
         if (self.underlyingImage) {
             [self imageLoadingComplete];
         } else {
@@ -95,7 +105,6 @@
 
 // Set the underlyingImage
 - (void)performLoadUnderlyingImageAndNotify {
-    
     // Get underlying image
     if (_image) {
         
@@ -104,7 +113,6 @@
         [self imageLoadingComplete];
         
     } else if (_photoURL) {
-        
         // Check what type of url it is
         if ([[[_photoURL scheme] lowercaseString] isEqualToString:@"assets-library"]) {
             
@@ -188,12 +196,21 @@
         @throw [NSException exceptionWithName:nil reason:nil userInfo:nil];
         
     }
+    
+    if (!self.underlyingImage) {
+        [self postThumbnailNotification];
+    }
 }
 
 // Release if we can get it again from path or url
 - (void)unloadUnderlyingImage {
     _loadingInProgress = NO;
 	self.underlyingImage = nil;
+}
+
+// Release if we can get it again from path or url
+- (void)unloadThumbImage {
+    self.fullViewThumbImage = nil;
 }
 
 - (void)imageLoadingComplete {
@@ -209,6 +226,11 @@
                                                         object:self];
 }
 
+- (void)postThumbnailNotification {
+    NSLog(@"posted noti---%@",self.fullViewThumbnailImage);
+    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION
+                                                        object:self];
+}
 - (void)cancelAnyLoading {
     if (_webImageOperation) {
         [_webImageOperation cancel];

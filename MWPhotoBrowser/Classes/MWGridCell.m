@@ -126,6 +126,7 @@
     [self hideImageFailure];
 }
 
+
 #pragma mark - Selection
 
 - (void)setSelectionMode:(BOOL)selectionMode {

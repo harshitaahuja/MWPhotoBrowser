@@ -90,6 +90,11 @@
                                              selector:@selector(handleMWPhotoLoadingDidEndNotification:)
                                                  name:MWPHOTO_LOADING_DID_END_NOTIFICATION
                                                object:nil];
+    // Listen for MWPhoto notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleMWPhotoThumbnailNotification:)
+                                                 name:MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION
+                                               object:nil];
     
 }
 
@@ -110,6 +115,8 @@
                 continue; // skip current
             }
             [p unloadUnderlyingImage];
+            [p unloadThumbImage];
+
         }
     }
     // Release thumbs
@@ -117,6 +124,7 @@
     for (id p in copy) {
         if (p != [NSNull null]) {
             [p unloadUnderlyingImage];
+            [p unloadThumbImage];
         }
     }
 }
@@ -727,7 +735,7 @@
             [photo loadUnderlyingImageAndNotify];
 		}
 	}
-	return nil;
+	return [photo fullViewThumbImage];
 }
 
 - (void)loadAdjacentPhotosIfNecessary:(id<MWPhoto>)photo {
@@ -740,6 +748,8 @@
                 // Preload index - 1
                 id <MWPhoto> photo = [self photoAtIndex:pageIndex-1];
                 if (![photo underlyingImage]) {
+                    //NSLog(@"inside at 3-----%lu",(unsigned long)pageIndex);
+
                     [photo loadUnderlyingImageAndNotify];
                     MWLog(@"Pre-loading image at index %lu", (unsigned long)pageIndex-1);
                 }
@@ -748,6 +758,8 @@
                 // Preload index + 1
                 id <MWPhoto> photo = [self photoAtIndex:pageIndex+1];
                 if (![photo underlyingImage]) {
+                    //NSLog(@"inside at 4-----%lu",(unsigned long)pageIndex);
+
                     [photo loadUnderlyingImageAndNotify];
                     MWLog(@"Pre-loading image at index %lu", (unsigned long)pageIndex+1);
                 }
@@ -765,11 +777,26 @@
         if ([photo underlyingImage]) {
             // Successful load
             [page displayImage];
-            [self loadAdjacentPhotosIfNecessary:photo];
+           // NSLog(@"called at 1-----");
+            //[self loadAdjacentPhotosIfNecessary:photo];
         } else {
             // Failed to load
             [page displayImageFailure];
         }
+        // Update nav
+        [self updateNavigation];
+    }
+}
+
+- (void)handleMWPhotoThumbnailNotification:(NSNotification *)notification {
+    id <MWPhoto> photo = [notification object];
+    MWZoomingScrollView *page = [self pageDisplayingPhoto:photo];
+    if (page) {
+        if([photo fullViewThumbImage]){
+            [page displayThumbnail];
+            //[self loadAdjacentPhotosIfNecessary:photo];
+        }
+        
         // Update nav
         [self updateNavigation];
     }
@@ -916,6 +943,7 @@
             id photo = [_photos objectAtIndex:i];
             if (photo != [NSNull null]) {
                 [photo unloadUnderlyingImage];
+                [photo unloadThumbImage];
                 [_photos replaceObjectAtIndex:i withObject:[NSNull null]];
                 MWLog(@"Released underlying image at index %lu", (unsigned long)i);
             }
@@ -927,6 +955,7 @@
             id photo = [_photos objectAtIndex:i];
             if (photo != [NSNull null]) {
                 [photo unloadUnderlyingImage];
+                [photo unloadThumbImage];
                 [_photos replaceObjectAtIndex:i withObject:[NSNull null]];
                 MWLog(@"Released underlying image at index %lu", (unsigned long)i);
             }
@@ -938,6 +967,7 @@
     id <MWPhoto> currentPhoto = [self photoAtIndex:index];
     if ([currentPhoto underlyingImage]) {
         // photo loaded so load ajacent now
+       // NSLog(@"called at 2-----%lu",(unsigned long)index);
         [self loadAdjacentPhotosIfNecessary:currentPhoto];
     }
     

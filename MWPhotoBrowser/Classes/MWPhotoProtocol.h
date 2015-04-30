@@ -11,6 +11,8 @@
 // Notifications
 #define MWPHOTO_LOADING_DID_END_NOTIFICATION @"MWPHOTO_LOADING_DID_END_NOTIFICATION"
 #define MWPHOTO_PROGRESS_NOTIFICATION @"MWPHOTO_PROGRESS_NOTIFICATION"
+#define MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION @"MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION"
+
 
 // If you wish to use your own data models for photo then they must conform
 // to this protocol. See instructions for details on each method.
@@ -31,6 +33,7 @@
 // in -loadUnderlyingImageAndNotify: which may be called by the photo browser if this
 // methods returns nil.
 @property (nonatomic, strong) UIImage *underlyingImage;
+@property (nonatomic, strong) UIImage *fullViewThumbImage;
 
 // Called when the browser has determined the underlying images is not
 // already loaded into memory but needs it.
@@ -51,6 +54,7 @@
 // You should release any underlying (possibly large and decompressed) image data
 // as long as the image can be re-loaded (from cache, file, or URL)
 - (void)unloadUnderlyingImage;
+-(void)unloadThumbImage;
 
 @optional
 

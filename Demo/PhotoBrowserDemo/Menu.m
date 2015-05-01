@@ -254,17 +254,17 @@
             // Photos
            // UIImage *image=[UIImage imageNamed:@"photo4.jpg"];
             
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_b.jpg"] fullViewThumbnail:nil]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
             // Thumbs
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
             // Options
 			break;
 		case 6:
@@ -1024,7 +1024,7 @@
             @synchronized(_assets) {
                 NSMutableArray *copy = [_assets copy];
                 for (ALAsset *asset in copy) {
-                    [photos addObject:[MWPhoto photoWithURL:asset.defaultRepresentation.url fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
+                    [photos addObject:[MWPhoto photoWithURL:asset.defaultRepresentation.url fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
                     [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:asset.thumbnail]]];
                 }
             }
@@ -1042,6 +1042,8 @@
     browser.displaySelectionButtons = displaySelectionButtons;
     browser.alwaysShowControls = displaySelectionButtons;
     browser.zoomPhotosToFill = YES;
+    UIImage* image = [UIImage imageNamed:@"photo1t.jpg"];
+    browser.placeholderImage = image;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     browser.wantsFullScreenLayout = YES;
 #endif

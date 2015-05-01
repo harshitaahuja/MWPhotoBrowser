@@ -117,7 +117,7 @@
 
 // Get and display image
 - (void)displayImage {
-	if (_photo ) {
+	if (_photo) {
 		
 		// Reset
 		self.maximumZoomScale = 1;
@@ -160,10 +160,15 @@
 
 - (void)displayThumbnail2 {
     if (_photo && _photoImageView.image == nil ) {
+        
+        if(_photoBrowser.placeholderImage){
+            [self displayThumbnail:_photoBrowser.placeholderImage];
+        }
+        
         @try {
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadImageWithURL:[_photo fullViewThumbURL]
-                                                       options:5
+                                                       options:0
                                                       progress:nil
                                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                                          if (image) {
@@ -178,7 +183,7 @@
 
 // Get and display image
 - (void)displayThumbnail:(UIImage *)img {
-    if (_photo && _photoImageView.image == nil ) {
+    if (_photo) {
         
         // Reset
         self.maximumZoomScale = 1;

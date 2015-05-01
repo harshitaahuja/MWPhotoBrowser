@@ -164,7 +164,7 @@
             @try {
                 SDWebImageManager *manager = [SDWebImageManager sharedManager];
                 _webImageOperation = [manager downloadImageWithURL:_photoURL
-                                                           options:5
+                                                           options:0
                                                           progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                                               if (expectedSize > 0) {
                                                                   float progress = receivedSize / (float)expectedSize;

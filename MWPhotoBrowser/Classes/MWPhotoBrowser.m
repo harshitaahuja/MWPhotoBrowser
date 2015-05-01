@@ -90,12 +90,8 @@
                                              selector:@selector(handleMWPhotoLoadingDidEndNotification:)
                                                  name:MWPHOTO_LOADING_DID_END_NOTIFICATION
                                                object:nil];
-    // Listen for MWPhoto notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleMWPhotoThumbnailNotification:)
-                                                 name:MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION
-                                               object:nil];
-    
+
+
 }
 
 - (void)dealloc {
@@ -735,7 +731,7 @@
             [photo loadUnderlyingImageAndNotify];
 		}
 	}
-	return [photo fullViewThumbImage];
+    return nil; //[photo fullViewThumbImage];
 }
 
 - (void)loadAdjacentPhotosIfNecessary:(id<MWPhoto>)photo {
@@ -788,19 +784,7 @@
     }
 }
 
-- (void)handleMWPhotoThumbnailNotification:(NSNotification *)notification {
-    id <MWPhoto> photo = [notification object];
-    MWZoomingScrollView *page = [self pageDisplayingPhoto:photo];
-    if (page) {
-        if([photo fullViewThumbImage]){
-            [page displayThumbnail];
-            //[self loadAdjacentPhotosIfNecessary:photo];
-        }
-        
-        // Update nav
-        [self updateNavigation];
-    }
-}
+
 
 #pragma mark - Paging
 

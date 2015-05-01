@@ -11,7 +11,7 @@
 // Notifications
 #define MWPHOTO_LOADING_DID_END_NOTIFICATION @"MWPHOTO_LOADING_DID_END_NOTIFICATION"
 #define MWPHOTO_PROGRESS_NOTIFICATION @"MWPHOTO_PROGRESS_NOTIFICATION"
-#define MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION @"MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION"
+
 
 
 // If you wish to use your own data models for photo then they must conform
@@ -33,7 +33,7 @@
 // in -loadUnderlyingImageAndNotify: which may be called by the photo browser if this
 // methods returns nil.
 @property (nonatomic, strong) UIImage *underlyingImage;
-@property (nonatomic, strong) UIImage *fullViewThumbImage;
+@property (nonatomic, strong) NSURL *fullViewThumbURL;
 
 // Called when the browser has determined the underlying images is not
 // already loaded into memory but needs it.

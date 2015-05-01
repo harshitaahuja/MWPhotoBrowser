@@ -12,6 +12,7 @@
 #import "MWPhoto.h"
 #import "DACircularProgressView.h"
 #import "MWPhotoBrowserPrivate.h"
+#import "UIImageView+WebCache.h"
 
 // Private methods and properties
 @interface MWZoomingScrollView () {
@@ -109,6 +110,7 @@
         [self displayImage];
     } else {
         // Will be loading so show loading
+        [self displayThumbnail2];
         [self showLoadingIndicator];
     }
 }
@@ -155,8 +157,27 @@
 	}
 }
 
+
+- (void)displayThumbnail2 {
+    if (_photo && _photoImageView.image == nil ) {
+        @try {
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:[_photo fullViewThumbURL]
+                                                       options:5
+                                                      progress:nil
+                                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                         if (image) {
+                                                             [self displayThumbnail:image];
+                                                         }
+                                                     }];
+        } @catch (NSException *e) {
+            MWLog(@"Photo from web: %@", e);
+        }
+    }
+}
+
 // Get and display image
-- (void)displayThumbnail {
+- (void)displayThumbnail:(UIImage *)img {
     if (_photo && _photoImageView.image == nil ) {
         
         // Reset
@@ -166,7 +187,7 @@
         self.contentSize = CGSizeMake(0, 0);
         
         // Get image from browser as it handles ordering of fetching
-        UIImage *img = [_photoBrowser imageForPhoto:_photo];
+        //UIImage *img = [_photoBrowser imageForPhoto:_photo];
         
         if (img) {
             

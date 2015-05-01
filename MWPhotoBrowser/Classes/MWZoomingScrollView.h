@@ -24,7 +24,7 @@
 
 - (id)initWithPhotoBrowser:(MWPhotoBrowser *)browser;
 - (void)displayImage;
--(void) displayThumbnail;
+-(void) displayThumbnail2;
 - (void)displayImageFailure;
 - (void)setMaxMinZoomScalesForCurrentBounds;
 - (void)prepareForReuse;

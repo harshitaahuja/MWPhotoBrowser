@@ -27,7 +27,7 @@
 @implementation MWPhoto
 
 @synthesize underlyingImage = _underlyingImage; // synth property from protocol
-@synthesize fullViewThumbImage = _fullViewThumbImage; // synth property from protocol
+@synthesize fullViewThumbURL = _fullViewThumbImage; // synth property from protocol
 
 
 #pragma mark - Class Methods
@@ -41,8 +41,8 @@
     return [MWPhoto photoWithURL:[NSURL fileURLWithPath:path] fullViewThumbnail:nil];
 }
 
-+ (MWPhoto *)photoWithURL:(NSURL *)url fullViewThumbnail:(UIImage*)thumbnailImage{
-	return [[MWPhoto alloc] initWithURL:url fullViewThumbnail:thumbnailImage];
++ (MWPhoto *)photoWithURL:(NSURL *)url fullViewThumbnail:(NSURL*)thumbnailURL{
+	return [[MWPhoto alloc] initWithURL:url fullViewThumbnail:thumbnailURL];
 }
 
 #pragma mark - Init
@@ -62,10 +62,10 @@
 	return self;
 }
 
-- (id)initWithURL:(NSURL *)url fullViewThumbnail:(UIImage*)thumbnailImage{
+- (id)initWithURL:(NSURL *)url fullViewThumbnail:(NSURL*)thumbnailURL{
 	if ((self = [super init])) {
 		_photoURL = [url copy];
-        _fullViewThumbnailImage = thumbnailImage;
+        _fullViewThumbnailURL = thumbnailURL;
 	}
 	return self;
 }
@@ -76,8 +76,8 @@
     return _underlyingImage;
 }
 
-- (UIImage *)fullViewThumbImage {
-    return _fullViewThumbnailImage;
+- (NSURL *)fullViewThumbURL {
+    return _fullViewThumbnailURL;
 }
 
 - (void)loadUnderlyingImageAndNotify {
@@ -164,7 +164,7 @@
             @try {
                 SDWebImageManager *manager = [SDWebImageManager sharedManager];
                 _webImageOperation = [manager downloadImageWithURL:_photoURL
-                                                           options:0
+                                                           options:5
                                                           progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                                               if (expectedSize > 0) {
                                                                   float progress = receivedSize / (float)expectedSize;
@@ -197,9 +197,7 @@
         
     }
     
-    if (!self.underlyingImage) {
-        [self postThumbnailNotification];
-    }
+    
 }
 
 // Release if we can get it again from path or url
@@ -210,7 +208,7 @@
 
 // Release if we can get it again from path or url
 - (void)unloadThumbImage {
-    self.fullViewThumbImage = nil;
+    self.fullViewThumbURL = nil;
 }
 
 - (void)imageLoadingComplete {
@@ -226,11 +224,7 @@
                                                         object:self];
 }
 
-- (void)postThumbnailNotification {
-    NSLog(@"posted noti---%@",self.fullViewThumbnailImage);
-    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_THUMBNAIL_LOADING_NOTIFICATION
-                                                        object:self];
-}
+
 - (void)cancelAnyLoading {
     if (_webImageOperation) {
         [_webImageOperation cancel];

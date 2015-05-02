@@ -45,13 +45,13 @@
 		
 		// Image view
 		_photoImageView = [[MWTapDetectingImageView alloc] initWithFrame:CGRectZero];
-		_photoImageView.tapDelegate = self;
+		//_photoImageView.tapDelegate = self;
 		_photoImageView.contentMode = UIViewContentModeCenter;
 		_photoImageView.backgroundColor = [UIColor blackColor];
 		[self addSubview:_photoImageView];
 		
 		// Loading indicator
-		_loadingIndicator = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 40.0f, 40.0f)];
+		_loadingIndicator = [[DACircularProgressView alloc] initWithFrame:CGRectMake(140.0f, 30.0f, 80.0f, 80.0f)];
         _loadingIndicator.userInteractionEnabled = NO;
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")) {
             _loadingIndicator.thicknessRatio = 0.2;
@@ -60,6 +60,7 @@
             _loadingIndicator.thicknessRatio = 0.4;
             _loadingIndicator.roundedCorners = YES;
         }
+        _loadingIndicator.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
 		_loadingIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin |
         UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
 		[self addSubview:_loadingIndicator];
@@ -118,7 +119,6 @@
 // Get and display image
 - (void)displayImage {
 	if (_photo) {
-		
 		// Reset
 		self.maximumZoomScale = 1;
 		self.minimumZoomScale = 1;
@@ -134,6 +134,7 @@
 			[self hideLoadingIndicator];
 			
 			// Set image
+            _photoImageView.image = nil;
 			_photoImageView.image = img;
 			_photoImageView.hidden = NO;
 			
@@ -146,7 +147,8 @@
 
 			// Set zoom to minimum zoom
 			[self setMaxMinZoomScalesForCurrentBounds];
-			
+            _photoImageView.tapDelegate = self;
+            _tapView.tapDelegate = self;
 		} else {
 			
 			// Failed no image
@@ -160,7 +162,8 @@
 
 - (void)displayThumbnail2 {
     if (_photo && _photoImageView.image == nil ) {
-        
+        _photoImageView.tapDelegate = nil;
+        _tapView.tapDelegate = nil;
         if(_photoBrowser.placeholderImage){
             [self displayThumbnail:_photoBrowser.placeholderImage];
         }
@@ -183,7 +186,7 @@
 
 // Get and display image
 - (void)displayThumbnail:(UIImage *)img {
-    if (_photo) {
+    if (_photo && [_photo underlyingImage] == nil) {
         
         // Reset
         self.maximumZoomScale = 1;

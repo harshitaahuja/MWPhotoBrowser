@@ -38,11 +38,11 @@
 
 // Deprecated
 + (MWPhoto *)photoWithFilePath:(NSString *)path {
-    return [MWPhoto photoWithURL:[NSURL fileURLWithPath:path] fullViewThumbnail:nil];
+    return [MWPhoto photoWithURL:[NSURL fileURLWithPath:path] photoThumbnailURL:nil];
 }
 
-+ (MWPhoto *)photoWithURL:(NSURL *)url fullViewThumbnail:(NSURL*)thumbnailURL{
-	return [[MWPhoto alloc] initWithURL:url fullViewThumbnail:thumbnailURL];
++ (MWPhoto *)photoWithURL:(NSURL *)url photoThumbnailURL:(NSURL*)thumbnailURL{
+	return [[MWPhoto alloc] initWithURL:url thumbnailURL:thumbnailURL];
 }
 
 #pragma mark - Init
@@ -62,10 +62,10 @@
 	return self;
 }
 
-- (id)initWithURL:(NSURL *)url fullViewThumbnail:(NSURL*)thumbnailURL{
+- (id)initWithURL:(NSURL *)url thumbnailURL:(NSURL*)thumbnailURL{
 	if ((self = [super init])) {
 		_photoURL = [url copy];
-        _fullViewThumbnailURL = thumbnailURL;
+        _photoThumbnailURL = thumbnailURL;
 	}
 	return self;
 }
@@ -77,7 +77,7 @@
 }
 
 - (NSURL *)fullViewThumbURL {
-    return _fullViewThumbnailURL;
+    return _photoThumbnailURL;
 }
 
 - (void)loadUnderlyingImageAndNotify {
@@ -179,8 +179,10 @@
                                                                  MWLog(@"SDWebImage failed to download image: %@", error);
                                                              }
                                                              _webImageOperation = nil;
-                                                             self.underlyingImage = image;
-                                                             [self imageLoadingComplete];
+                                                             if(image) {
+                                                                 self.underlyingImage = image;
+                                                                 [self imageLoadingComplete];
+                                                             }
                                                          }];
             } @catch (NSException *e) {
                 MWLog(@"Photo from web: %@", e);

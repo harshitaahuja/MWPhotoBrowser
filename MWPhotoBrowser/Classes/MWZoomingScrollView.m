@@ -111,7 +111,7 @@
         [self displayImage];
     } else {
         // Will be loading so show loading
-        [self displayThumbnail2];
+        [self displayThumbnail];
         [self showLoadingIndicator];
     }
 }
@@ -160,12 +160,12 @@
 }
 
 
-- (void)displayThumbnail2 {
+- (void)displayThumbnail {
     if (_photo && _photoImageView.image == nil ) {
         _photoImageView.tapDelegate = nil;
         _tapView.tapDelegate = nil;
         if(_photoBrowser.placeholderImage){
-            [self displayThumbnail:_photoBrowser.placeholderImage];
+            [self displayThumbnail:_photoBrowser.placeholderImage forImageURL:nil];
         }
         
         @try {
@@ -175,7 +175,7 @@
                                                       progress:nil
                                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                                          if (image) {
-                                                             [self displayThumbnail:image];
+                                                             [self displayThumbnail:image forImageURL:imageURL];
                                                          }
                                                      }];
         } @catch (NSException *e) {
@@ -185,8 +185,8 @@
 }
 
 // Get and display image
-- (void)displayThumbnail:(UIImage *)img {
-    if (_photo && [_photo underlyingImage] == nil) {
+- (void)displayThumbnail:(UIImage *)img forImageURL:(NSURL *)imageURL{
+    if (_photo && [_photo underlyingImage] == nil && (imageURL == nil || [[_photo fullViewThumbURL] isEqual:imageURL])) {
         
         // Reset
         self.maximumZoomScale = 1;

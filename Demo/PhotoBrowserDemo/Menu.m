@@ -171,7 +171,7 @@
 	switch (indexPath.row) {
 		case 0:
             // Photos
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] photoThumbnailURL:nil];
             photo.caption = @"The London Eye is a giant Ferris wheel situated on the banks of the River Thames, in London, England.";
 			[photos addObject:photo];
             // Options
@@ -182,10 +182,10 @@
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo5" ofType:@"jpg"]]];
             photo.caption = @"Fireworks";
 			[photos addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] photoThumbnailURL:nil];
             photo.caption = @"The London Eye is a giant Ferris wheel situated on the banks of the River Thames, in London, England.";
 			[photos addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]] photoThumbnailURL:nil];
             photo.caption = @"York Floods";
 			[photos addObject:photo];
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo4" ofType:@"jpg"]]];
@@ -200,10 +200,10 @@
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo5" ofType:@"jpg"]]];
             photo.caption = @"White Tower";
 			[photos addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] photoThumbnailURL:nil];
             photo.caption = @"The London Eye is a giant Ferris wheel situated on the banks of the River Thames, in London, England.";
 			[photos addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]] photoThumbnailURL:nil];
             photo.caption = @"York Floods";
 			[photos addObject:photo];
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo4" ofType:@"jpg"]]];
@@ -214,9 +214,9 @@
 			[thumbs addObject:photo];
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo2t" ofType:@"jpg"]]];
 			[thumbs addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3t" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3t" ofType:@"jpg"]] photoThumbnailURL:nil];
 			[thumbs addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo4t" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo4t" ofType:@"jpg"]] photoThumbnailURL:nil];
 			[thumbs addObject:photo];
             // Options
             startOnGrid = YES;
@@ -230,18 +230,18 @@
 			[photos addObject:photo];
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo1" ofType:@"jpg"]]];
 			[photos addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]] photoThumbnailURL:nil];
 			[photos addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3" ofType:@"jpg"]] photoThumbnailURL:nil];
 			[photos addObject:photo];
             // Thumbs
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo4t" ofType:@"jpg"]]];
 			[thumbs addObject:photo];
             photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo1t" ofType:@"jpg"]]];
 			[thumbs addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2t" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2t" ofType:@"jpg"]] photoThumbnailURL:nil];
 			[thumbs addObject:photo];
-            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3t" ofType:@"jpg"]] fullViewThumbnail:nil];
+            photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo3t" ofType:@"jpg"]] photoThumbnailURL:nil];
 			[thumbs addObject:photo];
             // Options
             displayActionButton = NO;
@@ -254,26 +254,26 @@
             // Photos
            // UIImage *image=[UIImage imageNamed:@"photo4.jpg"];
             
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSqOx-8KE18EgjRnHb0Qc8Cbq1baaHmLQhbWKi9PDHZPMZXsRfy"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://bmiet.in/wp-content/themes/bmietcustom/images/img_no_thumb.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT-qjBVqRpf2azKnX_yZDoK2PW_beE3xpwTM81wjfpIW9XMOQZj"]]];
             // Thumbs
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
-			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3567/3523321514_371d9ac42f_q.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3629/3339128908_7aecabc34b_q.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3364/3338617424_7ff836d55f_q.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3590/3329114220_5fbc5bc92b_q.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+			[thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm3.static.flickr.com/2449/4052876281_6e068ac860_q.jpg"] photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
             // Options
 			break;
 		case 6:
             // Photos & thumbs
-            photo = [MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3779/9522424255_28a5a9d99c_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]];
+            photo = [MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3779/9522424255_28a5a9d99c_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]];
             photo.caption = @"Tube";
             [photos addObject:photo];
-            [thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3779/9522424255_28a5a9d99c_q.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
-            photo = [MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3777/9522276829_fdea08ffe2_b.jpg"] fullViewThumbnail:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]];
+            [thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3779/9522424255_28a5a9d99c_q.jpg"] photoThumbnailURL:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]]];
+            photo = [MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3777/9522276829_fdea08ffe2_b.jpg"] photoThumbnailURL:[NSURL URLWithString:@"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgZNN8R63CgW2bYvn_IoEdTXN0kzkO8NuyLzEXO4vV3FpKZI2H"]];
             photo.caption = @"Flat White at Elliot's";
             [photos addObject:photo];
 //            [thumbs addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://farm4.static.flickr.com/3777/9522276829_fdea08ffe2_q.jpg"] fullViewThumbnail:[UIImage imageNamed:@"ImageSelectedOn"] ]];
@@ -1024,7 +1024,7 @@
             @synchronized(_assets) {
                 NSMutableArray *copy = [_assets copy];
                 for (ALAsset *asset in copy) {
-                    [photos addObject:[MWPhoto photoWithURL:asset.defaultRepresentation.url fullViewThumbnail:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
+                    [photos addObject:[MWPhoto photoWithURL:asset.defaultRepresentation.url photoThumbnailURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/5F68Vptlf6w/maxresdefault.jpg"]]];
                     [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:asset.thumbnail]]];
                 }
             }
